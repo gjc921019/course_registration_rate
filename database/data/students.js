@@ -1,8 +1,9 @@
 // Author: Kenneth Mason
-
+const bcrypt = require('bcrypt');
 const mongoCollections = require("./mongoCollections");
 const students = mongoCollections.students;
 const uuid = require("node-uuid");
+const saltRounds = 16;
 
   const get = async (id) =>{
     if (!id) throw "You must provide an id to search for";
@@ -40,6 +41,7 @@ const uuid = require("node-uuid");
 
     const studentCollection = await students();
     const id = uuid.v4();
+    pwd = await bcrypt.hashSync(pwd, saltRounds);
 
     const newstudent = {
       _id: id,

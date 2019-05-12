@@ -40,7 +40,7 @@ const static = express.static(__dirname + "/public");
 app.use(cookie());
 app.use("/public",static);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(rewriteUnsupportedBrowserMethods);
 app.use(session({

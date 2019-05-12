@@ -29,9 +29,7 @@ router.post("/login", async (req, res, next) => {
         let userCheck = await data.checkUsername(user);
         let passCheck = await data.matchPassword(user, password);
         
-        if (userCheck === user && passCheck.status === true) {
-            flag=0;
-            res.cookie('name', 'AuthCookie')
+        if (userCheck && passCheck.status) {
             let user = {
                 username: passCheck.studentgo.userName,
                 profile: passCheck.studentgo.profile
@@ -44,7 +42,7 @@ router.post("/login", async (req, res, next) => {
                 {
                     title: "Login",
                     style: "style.css",
-                    message: "Did not provide valid Username/Password",
+                    message: passCheck.message,
                     status: false
                 }
             )
@@ -78,7 +76,7 @@ router.get("/mainPage", checkAuthenticated, async (req, res) => {
     }
 });
 
-router.get("/logout", (req, res) => {
+router.get("/logout", checkAuthenticated, (req, res) => {
     req.session.destroy((err) => {
         if(err) {
             return console.log(err);

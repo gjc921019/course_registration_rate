@@ -1,7 +1,6 @@
-const bcrypt = require('bcrypt');
 const mongoCollections = require("./mongoCollections");
 const users = mongoCollections.students;
-const saltRounds = 16;
+const bcrypt = require('bcrypt');
 
 
 const checkUsername = async (username) => {
@@ -9,33 +8,33 @@ const checkUsername = async (username) => {
             const studentgo = await studentCollection.findOne({ userName: username });
             if (studentgo === null) 
                 { 
-                    return; 
+                    return false 
                 }
-            
-            let uname = studentgo.userName
-            return uname;
+
+            return true
     };
 
 const matchPassword = async (username, password) => {
         
             const studentCollection = await users();
             const studentgo = await studentCollection.findOne({ userName: username });
-            const pwd = studentgo.hashedPass;
 
-            if (username === studentgo.userName) {
-                let hashedPwd  = await bcrypt.hashSync(studentgo.hashedPass, saltRounds);
-                if (bcrypt.compareSync(password, hashedPwd)) {
+            if(studentgo !== null) {
+                let userName = studentgo.username;
+                if (userName === username) {
+                    if (!bcrypt.compareSync(password, studentgo.hashedPass)) {
+                        return {
+                            status: false,
+                            message: "The provided password is Wrong!"
+                    }
+                } else {
                     return {
                             status: true,
                             studentgo
                     }
-                } else {
-                    return {
-                        status: false,
-                        message: "The provided password is Wrong!"
-                    }
                 }
             }
+        }
         
         return {
             status: false,

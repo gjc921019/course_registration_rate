@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%; 
+}
+
+body {
+    font-family: montserrat, arial, verdana;
+}
+
+.err{
+	text-align: center;
+	font-size: 150%
+}
+
+.err-msg {
+	text-align: center;
+	margin-top: 50px;
+}

@@ -244,8 +244,16 @@ router.delete("/comment/:id/:comId", async (req, res) => {
 });
 
 // JG add routes
+function checkAuthenticated(req, res, next) {
+  if (req.session.user) {
+      next();
+  }
+  else {
+      res.status(403).render("users/error", { style: "error.css", title: "ERROR", err: "ERROR : 403 Forbidden. You are not Logged In. Please Login to continue." });
+  }
+};
 // Registration router
-router.get("/registration", async (req,res) =>{
+router.get("/registration", checkAuthenticated, async (req,res) =>{
   try{
     const loginUser = req.session.user; // no update, cannot use directly
     const user = await studentData.getByUserName(loginUser.username);
@@ -261,7 +269,7 @@ router.get("/registration", async (req,res) =>{
     if(registeredCoursesList.length === 0){
       booDrop = false;
     }
-    res.render("users/registration",{registeredCoursesList:registeredCoursesList,booDrop: booDrop});
+    res.render("users/registration",{style: "registration.css", registeredCoursesList:registeredCoursesList,booDrop: booDrop});
   }catch(e){
     res.status(400).json({error: e});
   }
@@ -289,7 +297,7 @@ router.post("/registration/search",async(req,res) =>{
       if(course === null){
         boo = false;
       }
-      res.render("users/search",{course : course, boo: boo, courseID: inputData.courseID});
+      res.render("users/search",{style: "registration.css", course : course, boo: boo, courseID: inputData.courseID});
     }catch(e){
       //console.log("error happened"); 
       res.status(500).json({error:e});
@@ -297,7 +305,7 @@ router.post("/registration/search",async(req,res) =>{
   }
 });
 
-router.get("/registration/comment/:id", async (req, res) => {
+router.get("/registration/comment/:id",checkAuthenticated, async (req, res) => {
   try {
     //console.log("enter comment router function successfully");
     const course = await courseData.getCourseById(req.params.id);
@@ -308,14 +316,14 @@ router.get("/registration/comment/:id", async (req, res) => {
       hasComment = true;
     }
     //res.status(200).json(course.comments);
-    res.render("users/comment",{comments: course.comments, id: course._id, courseName: course.courseName, hasComment: hasComment});
+    res.render("users/comment",{style: "registration.css", comments: course.comments, id: course._id, courseName: course.courseName, hasComment: hasComment});
   } catch (e) {
     res.status(404).json({ error: e });
   }
 });
 
 // used for "back to course"
-router.get("/registration/search/:id", async (req,res) =>{
+router.get("/registration/search/:id",checkAuthenticated, async (req,res) =>{
   try {
         const course = await courseData.getCourseById(req.params.id);
         //console.log(course);
@@ -324,7 +332,7 @@ router.get("/registration/search/:id", async (req,res) =>{
         // need req.session.course in router.post("/registration/search") too
         
 
-        res.render("users/search",{course : course, boo: true, courseID: course.courseID});
+        res.render("users/search",{style: "registration.css", course : course, boo: true, courseID: course.courseID});
       } catch (e) {
         res.status(404).json({ error: e });
       }
@@ -350,7 +358,7 @@ router.post("/registration/department", async (req,res) =>{
       if(courseList.length === 0){
         boo = false;
       }
-      res.render("users/department",{courses: courseList,boo: boo, department: inputData.department});
+      res.render("users/department",{style: "registration.css", courses: courseList,boo: boo, department: inputData.department});
     }catch(e){
       //console.log("error happened");
       res.status(500).json({error:e});
@@ -371,10 +379,10 @@ router.post("/registration/search/register", async (req,res) =>{
     const newStudent = await courseData.checkRegistration(course,user.username);
     //res.redirect("/mainPage");
     const hasError = false;
-    res.render("users/register_result",{hasError: hasError});
+    res.render("users/register_result",{style: "registration.css", hasError: hasError});
   }catch(e){
     const hasError = true;
-    res.render("users/register_result",{hasError:hasError,error:e});
+    res.render("users/register_result",{style: "registration.css", hasError:hasError,error:e});
   }
   
   
@@ -382,10 +390,10 @@ router.post("/registration/search/register", async (req,res) =>{
 
 //registration/drop part
 
-router.get("/registration/drop/:id", async (req,res) =>{
+router.get("/registration/drop/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
-    res.render("users/drop",{course:course});
+    res.render("users/drop",{style: "registration.css", course:course});
   }catch(e){
     res.status(500).json({error:e});
   }
@@ -405,7 +413,7 @@ router.get("/registration/drop/:id", async (req,res) =>{
   // }
 });
 
-router.get("/registration/drop/yes/:id", async (req,res) =>{
+router.get("/registration/drop/yes/:id",checkAuthenticated, async (req,res) =>{
   try{
     const loginUser = req.session.user;
     //console.log(loginUser);
@@ -418,31 +426,18 @@ router.get("/registration/drop/yes/:id", async (req,res) =>{
     const newCourse = await courseData.addOrMinusSeatByCourseID(course.courseID,1); // +1 seat
     //console.log(newCourse);
     const hasError = false;
-    res.render("users/drop_result",{hasError:hasError});
+    res.render("users/drop_result",{style: "registration.css", hasError:hasError});
   }catch(e){
     const hasError = true;
-    res.render("users/drop_result",{hasError:hasError,error:e});
+    res.render("users/drop_result",{style: "registration.css", hasError:hasError,error:e});
   }
 });
 
 
 
-
-
-
 // Rating router
 
-
-
-
-
-
-
-
-
-
-
-router.get("/rating", async(req,res) =>{
+router.get("/rating",checkAuthenticated, async(req,res) =>{
   const user = req.session.user;
   //console.log(user);
   const courseTitleList = user.profile.finishedCourses;
@@ -459,14 +454,14 @@ router.get("/rating", async(req,res) =>{
     if(finishedCoursesList.length === 0){
       hasFinishedCourse = false;
     }
-    res.render("users/rating",{student: user.profile, finishedCourses: finishedCoursesList, hasFinishedCourse: hasFinishedCourse});
+    res.render("users/rating",{style: "rating.css", student: user.profile, finishedCourses: finishedCoursesList, hasFinishedCourse: hasFinishedCourse});
   }catch(e){
     //console.log("sadfadsfadsf");
     res.status(500).json({error:e});
   }
 });
 
-router.get("/rating/details/:id", async (req,res) =>{
+router.get("/rating/details/:id",checkAuthenticated, async (req,res) =>{
   try{
     //console.log("enter router details");
     const course = await courseData.getCourseById(req.params.id);
@@ -481,14 +476,14 @@ router.get("/rating/details/:id", async (req,res) =>{
       hasComment = false;
     }
     //console.log(hasComment);
-    res.render("users/details",{hasComment: hasComment,comment:comment,id:course._id});
+    res.render("users/details",{style: "rating.css", hasComment: hasComment,comment:comment,id:course._id});
   }catch(e){
     res.status(500).json({error:e});
   }
 });
 
 //make a new comment for course id
-router.get("/rating/newComment/:id", async (req,res) =>{
+router.get("/rating/newComment/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     req.session.course = course;
@@ -497,7 +492,7 @@ router.get("/rating/newComment/:id", async (req,res) =>{
   //Here , we assume poster is gjc921019
   //const student = await studentData.get("9168b669-412c-43a9-9856-4bc5d5266632");
   //console.log(student);
-    res.render("users/newComment");
+    res.render("users/newComment", {style: "rating.css"});
   }catch(e){
     res.status(500).json({error:e});
   }
@@ -536,19 +531,19 @@ router.post("/rating/newComment/post", async (req,res) =>{
     const newCourse = await courseData.updateAvgRatingByCourseID(course.courseID);
     //console.log(newCourse);
     const hasError = false;
-    res.render("users/rating_result",{hasError:hasError,operation: "Create"});
+    res.render("users/rating_result",{style: "rating.css", hasError:hasError,operation: "Create"});
   }catch(e){
     const hasError = true;
-    res.render("users/rating_result",{hasError:hasError,error:e});
+    res.render("users/rating_result",{style: "rating.css", hasError:hasError,error:e});
   }
 });
 
 // change a previous comment for course id
-router.get("/rating/changeComment/:id", async (req,res) =>{
+router.get("/rating/changeComment/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     req.session.course = course;
-    res.render("users/changeComment");
+    res.render("users/changeComment", {style: "rating.css"});
   }catch(e){
     res.status(500).json({error:e});
   } 
@@ -588,15 +583,15 @@ router.post("/rating/changeComment/post", async (req,res) =>{
     // console.log("newCourse is:");
     // console.log(newCourse);
     const hasError = false;
-    res.render("users/rating_result",{hasError:hasError,operation: "Change"});
+    res.render("users/rating_result",{style: "rating.css", hasError:hasError,operation: "Change"});
   }catch(e){
     const hasError = true;
-    res.render("users/rating_result",{hasError:hasError,error:e});
+    res.render("users/rating_result",{style: "rating.css", hasError:hasError,error:e});
   }
 });
 
 // delete a comment for course id
-router.get("/rating/deleteComment/:id", async (req,res) =>{
+router.get("/rating/deleteComment/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     const user = req.session.user;
@@ -605,10 +600,10 @@ router.get("/rating/deleteComment/:id", async (req,res) =>{
     // console.log("newCourse is:");
     // console.log(newCourse);
     const hasError = false;
-    res.render("users/rating_result",{hasError:hasError,operation: "Delete"});
+    res.render("users/rating_result",{style: "rating.css", hasError:hasError,operation: "Delete"});
   }catch(e){
     const hasError = true;
-    res.render("users/rating_result",{hasError:hasError,error:e});
+    res.render("users/rating_result",{style: "rating.css", hasError:hasError,error:e});
   } 
 });
 

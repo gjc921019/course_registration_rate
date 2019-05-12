@@ -1,8 +1,12 @@
 <nav>
-        <ul>
-            <li><a href = "/mainPage">Go back to main page</a></li>
-        </ul>
+        <div class="circleBehind">
+            <a href="/mainPage">HOME</a>
+            <a>ABOUT-US</a>
+            <a>HOW IT WORKS</a>
+            <a href="/logout">LOGOUT</a>
+        </div>
 </nav>
+
 <section>
     <h1>Rating your courses</h1>
     {{#if hasFinishedCourse}}
@@ -10,10 +14,11 @@
     <ul>
         {{#each finishedCourses}}
             <article>
-                <li>
+                <li class="link-css">
                     <a href = "/courses/rating/details/{{this._id}}">
                     {{this.courseTitle}}  {{this.courseName}}</a>
                 </li>
+                <br>
             </article>
         {{/each}}
     </ul>

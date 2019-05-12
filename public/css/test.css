@@ -83,12 +83,11 @@ div.userInfo {
 }
 
 div.selection {
-    margin:50px auto;
+    font-size: 100%;
     grid-column: 2;
     height: 100%;
     width: 50%;
-    padding-top: 50px;
-    padding-left: 100px;
+    padding-top: 150px;
 }
 
 .card{
@@ -101,13 +100,12 @@ div.selection {
 .h1-card {
     text-align: center;
     color: white;
-    top: 50%;
 }
 
 .overlay{
     width:200px;
     height:100px;
-    background-color: #ff0073;
+    background-color: #191970;
     text-align: center;
     position:absolute;
     bottom:0;
@@ -125,8 +123,7 @@ div.selection {
 
 .overlay a{
     font-size: 150%;
-    color:white;
-    top: 50%;
+    color: white;
 }
 
 table { 
@@ -135,7 +132,6 @@ table {
     margin:50px auto;
     }
 
-/* Zebra striping */
 tr:nth-of-type(odd) { 
     background: #eee; 
     }
@@ -153,11 +149,6 @@ td, th {
     font-size: 18px;
     }
 
-/* 
-Max width before this PARTICULAR table gets nasty
-This query will take effect for any screen smaller than 760px
-and also iPads specifically.
-*/
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {

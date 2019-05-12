@@ -1,16 +1,21 @@
 <nav>
-        <ul>
-            <li><a href="/courses/rating/">Make comment for other course</a></li>
-            <li><a href = "/mainPage">Go back to main page</a></li>
-        </ul>
+        <div class="circleBehind">
+            <a href="/mainPage">HOME</a>
+            <a href="/courses/rating/">MAKE ANOTHER COMMENT</a>
+            <a>ABOUT-US</a>
+            <a>HOW IT WORKS</a>
+            <a href="/logout">LOGOUT</a>
+        </div>
 </nav>
-<div>
+
+<div class="rateAgain">
     <h1> Re-comment and re-rate {{course.courseTitle}} {{course.courseName}} </h1>
     <form action = "post" method = "POST" class = "new-search-form">
         <label>
             Make a comment
             <input type="text" name = "comment"/>
         </label>
+        <br>
         <label>
             Rate a score(max is 5.0)
             <input type = "number" name = "rating"/>

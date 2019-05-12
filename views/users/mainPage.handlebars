@@ -13,32 +13,60 @@
 
 <div class="userInfo">
     <h1>Student information</h1>
-    <dl>
-        <dt>Last Name: {{user.lastName}}</dt>
-        
-        <dt>First Name: {{user.firstName}}</dt>
-        
-        <dt>Student ID: {{user.studentId}}</dt>
-        
-        <dt>Year: {{user.year}}</dt>
 
-        <dt>Credits: {{user.credits}}</dt>
-        
-        <dt>Finished Courses: {{user.finishedCourses}}</dt>
-        
-        <dt>Current Courses: {{user.currentCourses}}</dt>
-        
-        <dt>Registered Courses: {{user.registeredCourses}}</dt>
-        
-    </dl>
+    <table>
+  <thead>
+    <tr>
+      <th>Data-Fields</th>
+      <th>Data-Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-column="df">Last Name</td>
+      <td data-column="dv">{{user.lastName}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">First Name</td>
+      <td data-column="dv">{{user.firstName}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">Student ID</td>
+      <td data-column="dv">{{user.studentId}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">Year</td>
+      <td data-column="dv">{{user.year}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">Credits</td>
+      <td data-column="dv">{{user.credits}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">Finished Courses</td>
+      <td data-column="dv">{{user.finishedCourses}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">Current Courses</td>
+      <td data-column="dv">{{user.currentCourses}}</td>
+    </tr>
+    <tr>
+      <td data-column="df">Registered Courses</td>
+      <td data-column="dv">{{user.registeredCourses}}</td>
+    </tr>
+
+  </tbody>
+</table>
 </div>
 
 <div class="selection">
         
         <h1>Choose Option:</h1>
+        
+        <br>
 
         <div class="card">
-            <h1>Register Here!</h1>
+            <h1 class="h1-card">Register Here!</h1>
             <div class="overlay"> 
                 <a href = "/courses/registration/">Registration</a> 
             </div>
@@ -47,7 +75,7 @@
         <br>
 
         <div class="card">
-            <h1>Rate Here!</h1>
+            <h1 class="h1-card">Rate Here!</h1>
             <div class="overlay"> 
                 <a href = "/courses/rating">Rating</a>
             </div>

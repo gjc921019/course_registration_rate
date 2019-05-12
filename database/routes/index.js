@@ -9,11 +9,12 @@ const app = express();
 
 const constructorMethod = app => {
 	app.use("/", loginRoutes);
-  app.use("/students", studentRoutes);
-  app.use("/courses", courseRoutes);
+  	app.use("/students", studentRoutes);
+  	app.use("/courses", courseRoutes);
+
   app.use("*", (req, res) => {
-    res.status(404).json({ error: "Not found" });
-  });
+      res.redirect("/");
+    });
 };
 
 constructorMethod(app);

@@ -8,27 +8,15 @@ const app = express();
 
 const studentData = require("../data/students");
 
-var flag=1;
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-var authenticated = false;
-const authenticate = function authenticate(req, res, next) {
-
-    if (req.cookies.name === 'AuthCookie') {
-        next();
-    }
-    else { res.status(403).render("users/login", { title: "ERROR : 403 Forbidden" }) }
-};
-
 router.get("/", (req, res) => {
-    if (req.cookies.name === 'AuthCookie' && flag==0) {
-        res.redirect("/mainPage");
+    if (!req.session.user) {
+        res.render('users/login', {title: "Login", style: "style.css"});
     }
     else {
-        app.set("view", "/views");
-        res.render('users/login', {title: "Login", style: "style.css"});
-        flag=0;
+        res.redirect("/mainPage");
     }
 });
 
@@ -65,27 +53,40 @@ router.post("/login", async (req, res, next) => {
     }
 });
 
-router.get("/mainPage", async (req, res, next) => {
+function checkAuthenticated(req, res, next) {
+    if (req.session.user) {
+        next();
+    }
+    else {
+        res.status(403).render("users/error", { title: "ERROR", err: "ERROR : 403 Forbidden. You are not Logged In. Please Login to continue." });
+    }
+};
+
+router.get("/mainPage", checkAuthenticated, async (req, res) => {
     try{
         let loginUser = req.session.user; // cannot use it because it will not be updated
-        //console.log(loginUser);
         const user = await studentData.getByUserName(loginUser.username);
-        //console.log(user);
         res.render("users/mainPage",
         {
             user: user.profile,
             title: "Main Page",
             style: "test.css"
         });
-    }catch(e){
+    }
+    catch(e){
         res.status(500).json({error:e});
     }
 });
 
-router.get("/logout", (req, res, next) => {
-    res.clearCookie("name")
-    flag=1;
+router.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if(err) {
+            return console.log(err);
+        }
+    res.clearCookie('AuthCookie');
     res.render("users/logout", {title: "Logout", style: "style.css"});
+});
+    
 });
 
 

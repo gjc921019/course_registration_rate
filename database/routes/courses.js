@@ -244,8 +244,16 @@ router.delete("/comment/:id/:comId", async (req, res) => {
 });
 
 // JG add routes
+function checkAuthenticated(req, res, next) {
+  if (req.session.user) {
+      next();
+  }
+  else {
+      res.status(403).render("users/error", { style: "error.css", title: "ERROR", err: "ERROR : 403 Forbidden. You are not Logged In. Please Login to continue." });
+  }
+};
 // Registration router
-router.get("/registration", async (req,res) =>{
+router.get("/registration", checkAuthenticated, async (req,res) =>{
   try{
     const loginUser = req.session.user; // no update, cannot use directly
     const user = await studentData.getByUserName(loginUser.username);
@@ -297,7 +305,7 @@ router.post("/registration/search",async(req,res) =>{
   }
 });
 
-router.get("/registration/comment/:id", async (req, res) => {
+router.get("/registration/comment/:id",checkAuthenticated, async (req, res) => {
   try {
     //console.log("enter comment router function successfully");
     const course = await courseData.getCourseById(req.params.id);
@@ -315,7 +323,7 @@ router.get("/registration/comment/:id", async (req, res) => {
 });
 
 // used for "back to course"
-router.get("/registration/search/:id", async (req,res) =>{
+router.get("/registration/search/:id",checkAuthenticated, async (req,res) =>{
   try {
         const course = await courseData.getCourseById(req.params.id);
         //console.log(course);
@@ -382,7 +390,7 @@ router.post("/registration/search/register", async (req,res) =>{
 
 //registration/drop part
 
-router.get("/registration/drop/:id", async (req,res) =>{
+router.get("/registration/drop/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     res.render("users/drop",{style: "registration.css", course:course});
@@ -405,7 +413,7 @@ router.get("/registration/drop/:id", async (req,res) =>{
   // }
 });
 
-router.get("/registration/drop/yes/:id", async (req,res) =>{
+router.get("/registration/drop/yes/:id",checkAuthenticated, async (req,res) =>{
   try{
     const loginUser = req.session.user;
     //console.log(loginUser);
@@ -429,7 +437,7 @@ router.get("/registration/drop/yes/:id", async (req,res) =>{
 
 // Rating router
 
-router.get("/rating", async(req,res) =>{
+router.get("/rating",checkAuthenticated, async(req,res) =>{
   const user = req.session.user;
   //console.log(user);
   const courseTitleList = user.profile.finishedCourses;
@@ -453,7 +461,7 @@ router.get("/rating", async(req,res) =>{
   }
 });
 
-router.get("/rating/details/:id", async (req,res) =>{
+router.get("/rating/details/:id",checkAuthenticated, async (req,res) =>{
   try{
     //console.log("enter router details");
     const course = await courseData.getCourseById(req.params.id);
@@ -475,7 +483,7 @@ router.get("/rating/details/:id", async (req,res) =>{
 });
 
 //make a new comment for course id
-router.get("/rating/newComment/:id", async (req,res) =>{
+router.get("/rating/newComment/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     req.session.course = course;
@@ -531,7 +539,7 @@ router.post("/rating/newComment/post", async (req,res) =>{
 });
 
 // change a previous comment for course id
-router.get("/rating/changeComment/:id", async (req,res) =>{
+router.get("/rating/changeComment/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     req.session.course = course;
@@ -583,7 +591,7 @@ router.post("/rating/changeComment/post", async (req,res) =>{
 });
 
 // delete a comment for course id
-router.get("/rating/deleteComment/:id", async (req,res) =>{
+router.get("/rating/deleteComment/:id",checkAuthenticated, async (req,res) =>{
   try{
     const course = await courseData.getCourseById(req.params.id);
     const user = req.session.user;

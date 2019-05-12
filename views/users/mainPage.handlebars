@@ -1,34 +1,61 @@
-<section>
+<article>
+<nav>
+        <div class="circleBehind">
+            <a href="/mainPage">HOME</a>
+            <a>ABOUT-US</a>
+            <a>HOW IT WORKS</a>
+            <a href="/logout">LOGOUT</a>
+        </div>
+
+</nav>
+
+<div class="twoColumn">
+
+<div class="userInfo">
     <h1>Student information</h1>
     <dl>
-        <dt>Last Name</dt>
-        <dd>{{user.lastName}}</dd>
-        <dt>First Name</dt>
-        <dd>{{user.firstName}}</dd>
-        <dt>Student ID</dt>
-        <dd>{{user.studentId}}</dd>
-        <dt>Year</dt>
-        <dd>{{user.year}}</dd>
-        <dt>Credits</dt>
-        <dd>{{user.credits}}</dd>
-        <dt>Finished Courses</dt>
-        <dd>{{user.finishedCourses}}</dd>
-        <dt>Current Courses</dt>
-        <dd>{{user.currentCourses}}</dd>
-        <dt>Registered Courses</dt>
-        <dd>{{user.registeredCourses}}</dd>
-    </dl>
-</section>
-<section>
-    <h1>Main Page</h1>
-    <ul>
-        <li><a href = "/courses/registration/">Registration</a></li>
-        <li><a href = "/courses/rating">Rating</a></li>
-    </ul>
-</section>
-
-<div class="logout-btn">
-
-        <button class="cust-button" type="button" onclick="window.location.href='./logout'"> Logout </button>
+        <dt>Last Name: {{user.lastName}}</dt>
         
+        <dt>First Name: {{user.firstName}}</dt>
+        
+        <dt>Student ID: {{user.studentId}}</dt>
+        
+        <dt>Year: {{user.year}}</dt>
+
+        <dt>Credits: {{user.credits}}</dt>
+        
+        <dt>Finished Courses: {{user.finishedCourses}}</dt>
+        
+        <dt>Current Courses: {{user.currentCourses}}</dt>
+        
+        <dt>Registered Courses: {{user.registeredCourses}}</dt>
+        
+    </dl>
 </div>
+
+<div class="selection">
+        
+        <h1>Choose Option:</h1>
+
+        <div class="card">
+            <h1>Register Here!</h1>
+            <div class="overlay"> 
+                <a href = "/courses/registration/">Registration</a> 
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+            <h1>Rate Here!</h1>
+            <div class="overlay"> 
+                <a href = "/courses/rating">Rating</a>
+            </div>
+        </div>
+</div>
+
+</div>
+
+
+
+</article>

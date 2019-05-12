@@ -24,8 +24,6 @@ const matchPassword = async (username, password) => {
 
             if (username === studentgo.userName) {
                 let hashedPwd  = await bcrypt.hashSync(studentgo.hashedPass, saltRounds);
-                console.log(hashedPwd);
-
                 if (bcrypt.compareSync(password, hashedPwd)) {
                     return {
                             status: true,

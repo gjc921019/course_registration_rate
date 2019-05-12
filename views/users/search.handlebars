@@ -7,43 +7,87 @@
             <a href="/logout">LOGOUT</a>
         </div>
 </nav>
+
 <section>
-    <h2>Target course</h2>
+    <div class="CourseInfo">
+    <h1 class="targetCourse">Target Course</h1>
     {{#if boo}}
-    <dl>
-        <dt>ID</dt>
-        <dd>{{course.courseID}}</dd>
-        <dt>Term</dt>
-        <dd>{{course.term}}</dd>
-        <dt>Title</dt>
-        <dd>{{course.courseTitle}}</dd>
-        <dt>Name</dt>
-        <dd>{{course.courseName}}</dd>
-        <dt>Credits</dt>
-        <dd>{{course.credits}}</dd>
-        <dt>Department</dt>
-        <dd>{{course.department}}</dd>
-        <dt>Seats</dt>
-        <dd>{{course.availableSeats}}</dd>
-        <dt>Time</dt>  
-        <dd>{{course.time}}</dd>
-        <dt>Location</dt>
-        <dd>{{course.location}}</dd>
-        <dt>Professor</dt>
-        <dd>{{course.professor}}</dd>
-        <dt>Prerequisite</dt>
-        <dd>{{course.prerequisite}}</dd>
-        <dt>Corequisite</dt>
-        <dd>{{course.corequisite}}</dd>
-        <dt>Description</dt>
-        <dd>{{course.description}}</dd>
-        <dt>Comments</dt>
-        <dd><a href = "/courses/registration/comment/{{course._id}}">comments</a></dd>
-        <dt>AvgRating</dt>
-        <dd>{{course.avgRating}}</dd>
-    </dl>
-    <form action = "/courses/registration/search/register" method = "POST">
-        <button type = "submit" class = "searchButton">Register</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Details</th>
+          <th>Values</th>
+        </tr>
+      </thead>
+  <tbody>
+    <tr>
+      <td>ID</td>
+      <td>{{course.courseID}}</td>
+    </tr>
+    <tr>
+      <td>Term</td>
+      <td>{{course.term}}</td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>{{course.courseTitle}}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{course.courseName}}</td>
+    </tr>
+    <tr>
+      <td>Credits</td>
+      <td>{{course.credits}}</td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td>{{course.department}}</td>
+    </tr>
+    <tr>
+      <td>Seats Available</td>
+      <td>{{course.availableSeats}}</td>
+    </tr>
+    <tr>
+      <td>Time</td>
+      <td>{{course.time}}</td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td>{{course.location}}</td>
+    </tr>
+    <tr>
+      <td>Professor</td>
+      <td>{{course.professor}}</td>
+    </tr>
+    <tr>
+      <td>Pre-requisite</td>
+      <td>{{course.prerequisite}}</td>
+    </tr>
+    <tr>
+      <td>Co-requisite</td>
+      <td>{{course.corequisite}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{course.description}}</td>
+    </tr>
+    <tr>
+      <td>Comments</td>
+      <td><a href = "/courses/registration/comment/{{course._id}}">View Comments</a></td>
+    </tr>
+    <tr>
+      <td>AvgRating</td>
+      <td>{{course.avgRating}}</td>
+    </tr>
+
+
+  </tbody>
+</table>
+</div>
+<br>
+    <form class="search-btn" action = "/courses/registration/search/register" method = "POST">
+        <button class="searchButton" type="submit">Register</button>
     </form>
     {{else}}
     <p> We're sorry, but no course was found for courseID {{courseID}}</p>

@@ -58,7 +58,7 @@ function checkAuthenticated(req, res, next) {
         next();
     }
     else {
-        res.status(403).render("users/error", { title: "ERROR", err: "ERROR : 403 Forbidden. You are not Logged In. Please Login to continue." });
+        res.status(403).render("users/error", { style: "error.css", title: "ERROR", err: "ERROR : 403 Forbidden. You are not Logged In. Please Login to continue." });
     }
 };
 

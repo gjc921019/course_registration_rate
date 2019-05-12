@@ -14,10 +14,11 @@
     <ul>
         {{#each finishedCourses}}
             <article>
-                <li>
+                <li class="link-css">
                     <a href = "/courses/rating/details/{{this._id}}">
                     {{this.courseTitle}}  {{this.courseName}}</a>
                 </li>
+                <br>
             </article>
         {{/each}}
     </ul>

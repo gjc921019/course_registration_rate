@@ -23,11 +23,11 @@ const authenticate = function authenticate(req, res, next) {
 
 router.get("/", (req, res) => {
     if (req.cookies.name === 'AuthCookie' && flag==0) {
-        res.redirect("/private");
+        res.redirect("/mainPage");
     }
     else {
         app.set("view", "/views");
-        res.render('users/login', {title: "Login"});
+        res.render('users/login', {title: "Login", style: "style.css"});
         flag=0;
     }
 });
@@ -40,9 +40,6 @@ router.post("/login", async (req, res, next) => {
     if (user && password) {
         let userCheck = await data.checkUsername(user);
         let passCheck = await data.matchPassword(user, password);
-
-        console.log("Passcheck Status: "+passCheck.status);
-        //console.log(passCheck);
         
         if (userCheck === user && passCheck.status === true) {
             flag=0;
@@ -58,6 +55,7 @@ router.post("/login", async (req, res, next) => {
             res.render("users/login",
                 {
                     title: "Login",
+                    style: "style.css",
                     message: "Did not provide valid Username/Password",
                     status: false
                 }
@@ -76,7 +74,8 @@ router.get("/mainPage", async (req, res, next) => {
         res.render("users/mainPage",
         {
             user: user.profile,
-            title: "Main Page"
+            title: "Main Page",
+            style: "test.css"
         });
     }catch(e){
         res.status(500).json({error:e});
@@ -86,7 +85,7 @@ router.get("/mainPage", async (req, res, next) => {
 router.get("/logout", (req, res, next) => {
     res.clearCookie("name")
     flag=1;
-    res.render("users/logout", {title: "Logout"});
+    res.render("users/logout", {title: "Logout", style: "style.css"});
 });
 
 

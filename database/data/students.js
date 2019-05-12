@@ -41,12 +41,11 @@ const saltRounds = 16;
 
     const studentCollection = await students();
     const id = uuid.v4();
-    pwd = await bcrypt.hashSync(pwd, saltRounds);
 
     const newstudent = {
       _id: id,
       userName: user,
-      hashedPass: pwd,
+      password: pwd,
       profile: {
         _id: id,
         lastName: last,

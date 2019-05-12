@@ -15,30 +15,31 @@ const checkUsername = async (username) => {
     };
 
 const matchPassword = async (username, password) => {
-        
+            
+            const saltRounds = 16;
             const studentCollection = await users();
             const studentgo = await studentCollection.findOne({ userName: username });
 
             if(studentgo !== null) {
-                let userName = studentgo.username;
-                if (userName === username) {
-                    if (!bcrypt.compareSync(password, studentgo.hashedPass)) {
+                if (username === studentgo.userName) {
+                    var hash = bcrypt.hashSync(studentgo.password, saltRounds);
+                    if (!bcrypt.compareSync(password, hash)) {
                         return {
                             status: false,
                             message: "The provided password is Wrong!"
-                    }
-                } else {
-                    return {
-                            status: true,
-                            studentgo
-                    }
+                        }
+                    }    
+                     return {
+                        status: true,
+                        studentgo
+                    } 
                 }
             }
-        }
-        
-        return {
-            status: false,
-            message: "No user found!"
+        else {
+                return {
+                    status: false,
+                    message: "No user found!"
+                }
         }
     };
 module.exports = {

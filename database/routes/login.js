@@ -13,14 +13,14 @@ app.use(bodyParser.json());
 
 router.get("/", (req, res) => {
     if (!req.session.user) {
-        res.render('users/login', {title: "Login", style: "style.css"});
+        res.render('users/login', {title: "Register & Rate-Login", style: "style.css"});
     }
     else {
         res.redirect("/mainPage");
     }
 });
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", async (req, res) => {
 
     let user = req.body.username;
     let password = req.body.password;
@@ -40,7 +40,7 @@ router.post("/login", async (req, res, next) => {
         else {
             res.render("users/login",
                 {
-                    title: "Login",
+                    title: "Register & Rate-Login",
                     style: "style.css",
                     message: passCheck.message,
                     status: false
@@ -67,7 +67,7 @@ router.get("/mainPage", checkAuthenticated, async (req, res) => {
         res.render("users/mainPage",
         {
             user: user.profile,
-            title: "Main Page",
+            title: "Register & Rate-Dashboard",
             style: "test.css"
         });
     }
@@ -82,7 +82,7 @@ router.get("/logout", checkAuthenticated, (req, res) => {
             return console.log(err);
         }
     res.clearCookie('AuthCookie');
-    res.render("users/logout", {title: "Logout", style: "style.css"});
+    res.render("users/logout", {title: "Register & Rate-Logout", style: "style.css"});
 });
     
 });

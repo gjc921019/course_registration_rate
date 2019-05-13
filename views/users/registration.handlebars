@@ -14,14 +14,14 @@
   <div class="column">
     <h1 class="h1-reg">Search by CourseID</h1>
     <p>Please type a course ID that you want to search</p>
-    <form class="reg" action = "search" method = "POST" class = "new-search-form">
+    <form class="reg" action="search" method="POST">
         <label>
             Search course ID
-            <input class="cID" type="number" name = "courseID" class="full-width-input"/>
+            <input class="cID" type="number" name="courseID"/>
         </label>
         <br>
         <br>
-        <button type = "submit" class = "searchButton">Search</button>
+        <button type="submit" class="searchButton">Search</button>
     </form>
   </div>
 
@@ -30,14 +30,14 @@
     <p>Please choose a department that you want to search</p>
     <form class="reg" action = "department" method = "POST">
         <label for="department">Department</label>
-        <select class="dept" value="{{department}}" name="department" id="department">
+        <select class="dept" name="department" id="department">
           <option value="Computer Science">Computer Science</option>
           <option value="Electrical Engineering">Electrical Engineering</option>
         </select>
         <br>
         <br>
         <div>
-        <button type = "submit" class = "searchButton">Search</button>
+        <button type = "submit" class="searchButton">Search</button>
         </div>
     </form>
   </div>

@@ -11,6 +11,7 @@ html {
 
 body {
     font-family: montserrat, arial, verdana;
+    background-color: #ffffff;
 }
 
 nav {
@@ -68,13 +69,14 @@ div.circleBehind a:hover:after
 }
 
 .animation-aboutus {
+    color: #949494;
     text-align: center;
     background-image: url(https://media2.giphy.com/media/10gZtbanKgZxqo/giphy.gif);
     color: transparent;
     -moz-background-clip: text;
     -webkit-background-clip: text;
     text-transform: uppercase;
-    font-family: "arial";
+    font-family: "Montserrat";
     font-size: 50px;
     line-height: .75;
     margin: 10px 0;

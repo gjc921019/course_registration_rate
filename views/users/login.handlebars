@@ -1,5 +1,3 @@
-<article>
-
 <nav>
         <div class="circleBehind">
             <a>HOME</a>
@@ -9,21 +7,26 @@
 
 </nav>
 
-<h2>Welcome to Register&Rate!</h2>
+<br>
+<br>
+
+<h1>Welcome to Register&Rate!</h1>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="/">
             <h1>Hurry Up!</h1>
             <h2>Register your favourite courses.</h2>
-            <img class="home" src="https://media3.giphy.com/media/3o6Zt6ivHPMYy1HJQY/source.gif">
+            <img class="home" src="https://media3.giphy.com/media/3o6Zt6ivHPMYy1HJQY/source.gif" alt="Did you register?">
         </form>
     </div>
 
     <div class="form-container sign-in-container">
         <form class="Myform" id="login-form" method="POST" action="/login">
             <h1>Login</h1>
-            <span>Enter details below to login.</span>
+            <br>
+            <label for="username">Username</label>
             <input name="username" id="username" type="text" placeholder="Username" required oninvalid="this.setCustomValidity('Username cannot be empty.')" onchange="this.setCustomValidity('')"/>
+            <label for="password">Password</label>
             <input name="password" id="password" type="password" placeholder="Password" required oninvalid="this.setCustomValidity('Username cannot be empty.')" 
                             onchange="this.setCustomValidity('')"/>
             <button>Sign In</button>
@@ -69,5 +72,3 @@ signInButton.addEventListener('click', () => {
                 {{/unless}}
 
                 </div>          
-     
-</article>

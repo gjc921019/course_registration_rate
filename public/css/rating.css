@@ -14,9 +14,13 @@ body {
     background-color: #F0FFF0;
 }
 
+.rate, .ratingResult {
+    font-size: 1.2em;
+}
+
 nav {
 	margin-top: 20px;
-	background-color: #D2691E;
+	background-color: #bd5b00;
     padding: 10px 15px 5px;
     text-align: center;
 
@@ -40,7 +44,7 @@ div.circleBehind a:before, div.circleBehind a:after
     left: 50%;
     width: 50px;
     height: 50px;
-    border: 4px solid #D2691E;
+    border: 4px solid #bd5b00;
     transform: translateX(-50%) translateY(-50%) scale(0.8);
     border-radius: 50%;
     background: transparent;
@@ -66,10 +70,6 @@ div.circleBehind a:hover:after
 {
     opacity: 1;
     transform: translateX(-50%) translateY(-50%) scale(1.3);
-}
-
-.rateAgain {
-    font-size: 150%;
 }
 
 .link-css a {
@@ -110,12 +110,38 @@ div.circleBehind a:hover:after
     font-size: 1.5em;
 }
 
+.rateAgain {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.new-comment-form {
+    font-size: 1.5em;
+    height: 100%;
+    display: inline-block;
+}
+
+.ip-new-comment-form {
+    width: 200px;
+    height: 25px;
+}
+
+.reCommentButton {
+    margin-top: 30px;
+    font-size: 0.8em;
+    width: 85px;
+    height: 35px;
+    border-radius: 20%;
+    background-color: #bd5b00;
+    color: white;
+}
+
 .searchButton {
     margin-top: 30px;
     font-size: 0.8em;
     width: 85px;
     height: 35px;
     border-radius: 20%;
-    background-color: #D2691E;
+    background-color: #bd5b00;
     color: white;
 }

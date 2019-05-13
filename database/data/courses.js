@@ -23,10 +23,10 @@ const getCourseById = async(id)=> {
   return course;
 };
 
-const addCourse = async(cid, term, title, name, credits, dept, seats, time, location, prof, prereq, coreq, description)=> {
+const addCourse = async(cid, title, name, credits, dept, seats, time, location, prof, prereq, coreq, description)=> {
   if (!cid || typeof(cid) !== "number") throw "You must provide a course ID";
   if (!title || typeof(title) !== "string") throw "You must provide a title";
-  if (!term || typeof(term) !== "string") throw "You must provide a term";
+  //if (!term || typeof(term) !== "string") throw "You must provide a term";
   if (!name || typeof(name) !== "string") throw "You must provide a name";
   if (!dept || typeof(dept) !== "string") throw "You must provide a department";
   if (!time || typeof(time) !== "string") throw "You must provide a time";
@@ -46,7 +46,7 @@ const addCourse = async(cid, term, title, name, credits, dept, seats, time, loca
   const newCourse = {
     _id: uuid.v4(),
     courseID: cid,
-    term: term,
+    //term: term,
     courseTitle: title,
     courseName: name,
     credits: credits,
@@ -75,48 +75,48 @@ const removeCourse = async(id) => {
   }
 };
 
-const updateCourse = async(id, term, seats, time, location, prof, prereq, coreq, description, avgRating) => {
-  if (!term || typeof(term) !== "string") throw "You must provide a term";
-  if (!time || typeof(time) !== "string") throw "You must provide a time";
-  if (!location || typeof(location) !== "string") throw "You must provide a location";
-  if (!prof || typeof(prof) !== "string") throw "You must provide the professor";
-  if(seats !== 0){
-    if (!seats || typeof(seats) !== "number") throw "You must provide number of available seats";
-  }
-  if (!prereq || !Array.isArray(prereq)) throw "You must provide an array of prerequisites";
-  if (!coreq || !Array.isArray(coreq)) throw "You must provide an array of corequisites";
-  if (!description || typeof(description) !== "string") throw "You must provide a decription";
-  if(avgRating !== 0){
-    if (!avgRating || typeof(avgRating) !== "number") throw "You must provide number as a rating";
-  }
+// const updateCourse = async(id, term, seats, time, location, prof, prereq, coreq, description, avgRating) => {
+//   if (!term || typeof(term) !== "string") throw "You must provide a term";
+//   if (!time || typeof(time) !== "string") throw "You must provide a time";
+//   if (!location || typeof(location) !== "string") throw "You must provide a location";
+//   if (!prof || typeof(prof) !== "string") throw "You must provide the professor";
+//   if(seats !== 0){
+//     if (!seats || typeof(seats) !== "number") throw "You must provide number of available seats";
+//   }
+//   if (!prereq || !Array.isArray(prereq)) throw "You must provide an array of prerequisites";
+//   if (!coreq || !Array.isArray(coreq)) throw "You must provide an array of corequisites";
+//   if (!description || typeof(description) !== "string") throw "You must provide a decription";
+//   if(avgRating !== 0){
+//     if (!avgRating || typeof(avgRating) !== "number") throw "You must provide number as a rating";
+//   }
 
-  const courseCollection = await courses();
-  let course = await getCourseById(id);
-  const newCourse = {
-    _id: uuid.v4(),
-    courseID: cid,
-    term: term,
-    courseTitle: title,
-    courseName: name,
-    credits: credits,
-    department: dept,
-    availableSeats: seats,
-    time: time,
-    location: location,
-    professor: prof,
-    prerequisite: prereq,
-    corequisite: coreq,
-    description: description,
-    comments: course.comments,
-    avgRating : avgRating
-  };
+//   const courseCollection = await courses();
+//   let course = await getCourseById(id);
+//   const newCourse = {
+//     _id: uuid.v4(),
+//     courseID: cid,
+//     term: term,
+//     courseTitle: title,
+//     courseName: name,
+//     credits: credits,
+//     department: dept,
+//     availableSeats: seats,
+//     time: time,
+//     location: location,
+//     professor: prof,
+//     prerequisite: prereq,
+//     corequisite: coreq,
+//     description: description,
+//     comments: course.comments,
+//     avgRating : avgRating
+//   };
 
-  const updatedInfo = await courseCollection.replaceOne({ _id: id }, newCourse);
-  if (updatedInfo.modifiedCount === 0) {
-    console.log("No updates");
-  }
-  return await getCourseById(id);
-};
+//   const updatedInfo = await courseCollection.replaceOne({ _id: id }, newCourse);
+//   if (updatedInfo.modifiedCount === 0) {
+//     console.log("No updates");
+//   }
+//   return await getCourseById(id);
+// };
 
 const addComment = async(id, comment, avgRating) => {
   if (!comment.poster) throw "You must provide the posting student";
@@ -549,7 +549,7 @@ module.exports = {
   getCourseById,
   addCourse,
   removeCourse,
-  updateCourse,
+  //updateCourse,
   addComment,
   removeComment,
   getCourseByCourseID,

@@ -8,7 +8,7 @@
     "seed": "node ./tasks/seed.js",
     "start": "node index.js"
   },
-  "author": "Kenneth Mason",
+  "author": "Kenneth Mason, Jiacheng Guo, Janiece Pandya, Rakshak Kumar",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -24,6 +24,12 @@
     "mongodb": "^3.2.4",
     "node-uuid": "^1.4.8",
     "path": "^0.12.7",
+    "popper.js": "^1.15.0",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "bootstrap-4": "*",
+    "jquery": "*",
+    "tether": "*"
   }
 }

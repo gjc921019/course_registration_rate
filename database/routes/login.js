@@ -87,5 +87,13 @@ router.get("/logout", checkAuthenticated, (req, res) => {
     
 });
 
+router.get("/howitworks", (req, res) => {
+    res.render('users/howitworks');
+});
+
+router.get("/aboutus", (req, res) => {
+    res.render('users/aboutus',  {title: "Register & Rate-About Us", style: "aboutus.css"});
+});
+
 
 module.exports = router;

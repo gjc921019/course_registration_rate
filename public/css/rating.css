@@ -89,3 +89,33 @@ div.circleBehind a:hover:after
     cursor: -webkit-grabbing; cursor: grabbing;
     color: blue;
 }
+
+.div-search {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.new-search-form {
+    font-size: 1.5em;
+    height: 100%;
+    display: inline-block;
+}
+
+.ip-new-search-form {
+    width: 200px;
+    height: 25px;
+}
+
+.editComments {
+    font-size: 1.5em;
+}
+
+.searchButton {
+    margin-top: 30px;
+    font-size: 0.8em;
+    width: 85px;
+    height: 35px;
+    border-radius: 20%;
+    background-color: #D2691E;
+    color: white;
+}

@@ -2,7 +2,7 @@
         <div class="circleBehind">
             <a href="/mainPage">HOME</a>
             <a href="/courses/rating/">MAKE ANOTHER COMMENT</a>
-            <a>ABOUT-US</a>
+            <a href="/aboutus">ABOUT-US</a>
             <a>HOW IT WORKS</a>
             <a href="/logout">LOGOUT</a>
         </div>
@@ -12,12 +12,13 @@
     {{#if hasComment}}
     <p>The previous comment made by you is:</p>
     <dl>
-        <dt>Comment</dt>
-        <dd>{{comment.comment}}</dd>
-        <dt>Rate</dt>
-        <dd>{{comment.rate}}</dd>
+        <dt>Comment : {{comment.comment}}</dt>
+        
+        <dt>Rate : {{comment.rate}}</dt>
+
     </dl>
-    <ul>
+
+    <ul class="editComments">
         <li><a href = "/courses/rating/changeComment/{{id}}">Change your comment</a></li>
         <li><a href = "/courses/rating/deleteComment/{{id}}">Delete your comment</a></li>
     </ul>

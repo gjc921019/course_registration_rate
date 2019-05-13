@@ -279,14 +279,17 @@ router.get("/registration", checkAuthenticated, async (req,res) =>{
 
 router.post("/registration/search",async(req,res) =>{
   //console.log(req.body);
-  //let inputData = xss(req.body);
-  let inputData = req.body;
-  //console.log(inputData);
+  let courseID = req.body.courseID;
+  //console.log(courseID);
+  // let inputData = req.body;
+  // for (let i of Object.keys(inputData)) {
+  //   console.log(inputData[i])
+  // }
   //let inputData = req.body;
   //console.log(inputData);
   let errors = "";
 
-  if(!inputData.courseID){
+  if(!courseID){
     errors = "No courseID provided";
   }
 
@@ -296,14 +299,14 @@ router.post("/registration/search",async(req,res) =>{
   else{
     try{
       //console.log("enter try successfully");
-      const course = await courseData.getCourseByCourseID(inputData.courseID);
+      const course = await courseData.getCourseByCourseID(courseID);
       //console.log(course);
       req.session.course = course;
       let boo = true;
       if(course === null){
         boo = false;
       }
-      res.render("users/search",{title: "Register & Rate-Search", style: "registration.css", course : course, boo: boo, courseID: inputData.courseID});
+      res.render("users/search",{title: "Register & Rate-Search", style: "registration.css", course : course, boo: boo, courseID: courseID});
     }catch(e){
       //console.log("error happened"); 
       res.status(500).json({error:e});

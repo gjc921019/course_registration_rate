@@ -421,10 +421,19 @@ router.get("/registration/drop/yes/:id",checkAuthenticated, async (req,res) =>{
     const course = await courseData.getCourseById(req.params.id);
     //console.log(course);
     //console.log(course.courseTitle);
+    //console.log(course);
+    const corequisiteList = course.corequisite;
     const newStudent = await studentData.dropRegisteredCourses(loginUser.username,course.courseTitle);
     //console.log(newStudent);
     const newCourse = await courseData.addOrMinusSeatByCourseID(course.courseID,1); // +1 seat
     //console.log(newCourse);
+    // drop all of its corequisite too
+    for(let i = 0; i<corequisiteList.length; i++){
+      await studentData.dropRegisteredCourses(loginUser.username,corequisiteList[i]);
+      const curCourse = await courseData.getCourseByCourseTitle(corequisiteList[i]);
+      //console.log(curCourse);
+      await courseData.addOrMinusSeatByCourseID(curCourse.courseID,1);
+    }
     const hasError = false;
     res.render("users/drop_result",{style: "registration.css", hasError:hasError});
   }catch(e){

@@ -19,7 +19,7 @@ body {
 
 nav {
 	margin-top: 20px;
-	background-color: #ff0073;
+	background-color: #df3500;
     padding: 10px 15px 5px;
     text-align: center;
 
@@ -43,7 +43,7 @@ div.circleBehind a:before, div.circleBehind a:after
     left: 50%;
     width: 50px;
     height: 50px;
-    border: 4px solid #ff0073;
+    border: 4px solid #df3500;
     transform: translateX(-50%) translateY(-50%) scale(0.8);
     border-radius: 50%;
     background: transparent;
@@ -74,9 +74,6 @@ div.circleBehind a:hover:after
 h1 {
 	font-weight: bold;
 	margin: 0;
-}
-
-h2 {
 	text-align: center;
 }
 
@@ -101,8 +98,8 @@ span {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid #df3500;
+	background-color: #df3500;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;

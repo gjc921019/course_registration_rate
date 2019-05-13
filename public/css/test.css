@@ -17,7 +17,7 @@ body {
 
 nav {
 	margin-top: 20px;
-	background-color: #3498DB;
+	background-color: #007dbb;
     padding: 10px 15px 5px;
     text-align: center;
 
@@ -41,7 +41,7 @@ div.circleBehind a:before, div.circleBehind a:after
     left: 50%;
     width: 50px;
     height: 50px;
-    border: 4px solid #3498DB;
+    border: 4px solid #007dbb;
     transform: translateX(-50%) translateY(-50%) scale(0.8);
     border-radius: 50%;
     background: transparent;
@@ -98,6 +98,7 @@ div.selection {
 }
 
 .h1-card {
+    font-size: 2em;
     text-align: center;
     color: white;
 }
@@ -137,7 +138,7 @@ tr:nth-of-type(odd) {
     }
 
 th { 
-    background: #3498db; 
+    background: #007dbb; 
     color: white; 
     font-weight: bold; 
     }

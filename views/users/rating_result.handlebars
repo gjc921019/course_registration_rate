@@ -8,10 +8,10 @@
             <a href="/logout">LOGOUT</a>
         </div>
 </nav>
-<section>
+<section class="ratingResult">
     {{#if hasError}}
-    <p>Rating failed because {{error}}</p>
+    <h1 class="ratingResult">Rating failed because {{error}}</h1>
     {{else}}
-    <p>{{operation}} Rating successfully</p>
+    <h1 class="ratingResult">Rating {{operation}} successfully</h1>
     {{/if}}
 </section>

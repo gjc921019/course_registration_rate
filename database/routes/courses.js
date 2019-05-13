@@ -5,6 +5,8 @@ const router = express.Router();
 const data = require("../data");
 const studentData = data.students;
 const courseData = data.courses;
+const xss = require("xss");
+
 
 // router.get("/:id", async (req, res) => {
 //   try {
@@ -276,7 +278,11 @@ router.get("/registration", checkAuthenticated, async (req,res) =>{
 });
 
 router.post("/registration/search",async(req,res) =>{
+  //console.log(req.body);
+  //let inputData = xss(req.body);
   let inputData = req.body;
+  //console.log(inputData);
+  //let inputData = req.body;
   //console.log(inputData);
   let errors = "";
 

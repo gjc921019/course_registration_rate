@@ -52,8 +52,84 @@ const main = async () => {
     "This course will cover topics encompassing the fundamental subject matter for the design of optical systems. Topics will include optical system analysis, optical instrument analysis, applications of thin-film coatings and opto-mechanical system design in the first term. The second term will cover the subjects of photometry and radiometry, spectrographic and spectrophotometric systems, infrared radiation measurement and instrumentation, lasers in optical systems and photonelectron conversion");
     const course15 = await courses.addCourse(15,"ee516","Photonics 2",3,"Electrical Engineering",1,"Thursday 1pm to 3pm", "BC 406","Michel Wang",["ee515"],[],
     "This course will cover topics encompassing the fundamental subject matter for the design of optical systems. Topics will include optical system analysis, optical instrument analysis, applications of thin-film coatings and opto-mechanical system design in the first term. The second term will cover the subjects of photometry and radiometry, spectrographic and spectrophotometric systems, infrared radiation measurement and instrumentation, lasers in optical systems and photonelectron conversion");
-    const course16 = await courses.addCourse(16,"ee551", "Engineering Programming: Python",3,"Electrical Enigineering",0,"Wednesday 3pm to 5pm", "BC 310","Michel Zhang",[],[],
+    const course16 = await courses.addCourse(16,"ee551", "Engineering Programming: Python",3,"Electrical Engineering",0,"Wednesday 3pm to 5pm", "BC 310","Michel Zhang",[],[],
     "This course presents tool, techniques, algorithms, and programming techniques using the Python programming language for data intensive applications and decision making. The course formally introduces techniques to: (i) gather,(ii) store, and (iii) process large volumes of data to make informed decisions. Such techniques find applicability in many engineering application areas, including communications systems, embedded systems, smart grids, robotics, Internet, and enterprise networks, or any network where information flows and alters decision making.");
+    //add comments
+    await courses.addCommentByCourseID(1,"fakeUser1","This is a very good course",5);
+    await courses.addCommentByCourseID(1,"fakeUser2","I don't like this course",1);
+    await courses.addCommentByCourseID(1,"fakeUser3","This course may be too easy for graduate student",2);
+    await courses.addCommentByCourseID(1,"fakeUser4","The professor of CS 501 is pretty good",4);
+    await courses.updateAvgRatingByCourseID(1);
+
+    await courses.addCommentByCourseID(2,"fakeUser1","The professor of this course has strong accent,which makes it very hadr to follow him",1);
+    await courses.addCommentByCourseID(2,"fakeUser2","I don't like this course, too hard",2);
+    await courses.addCommentByCourseID(2,"fakeUser3","This course may be not too friendly for new CS student. Very tough",1);
+    await courses.addCommentByCourseID(2,"fakeUser4","Although the course itself is hard, the professor of CS 520 is pretty good and respnsible",3);
+    await courses.updateAvgRatingByCourseID(2);
+
+    await courses.addCommentByCourseID(3,"fakeUser1","Every useful course, Highly recommend",5);
+    await courses.addCommentByCourseID(3,"fakeUser2","Fundamental CS course, userful",4);
+    await courses.updateAvgRatingByCourseID(3);
+
+    await courses.addCommentByCourseID(4,"fakeUser1","Homework is too tough!!!!",2);
+    await courses.addCommentByCourseID(4,"fakeUser2","The materials that professor use is too old. Not a good course",1);
+    await courses.addCommentByCourseID(4,"fakeUser3","This course may be not too friendly for new CS student. Very tough",3);
+    await courses.updateAvgRatingByCourseID(4);
+
+    await courses.addCommentByCourseID(5,"fakeUser1","VERY USEFUL course!!!! You have to choose this one",5);
+    await courses.addCommentByCourseID(5,"fakeUser2","The assignments are too much and the grading method is too strict!!!",2);
+    await courses.addCommentByCourseID(5,"fakeUser3"," Final is a project, by which you can learn and practice lots of techs you learned ",4);
+    await courses.addCommentByCourseID(5,"fakeUser4","I pay 500 dollars for each 2.5 hours course and professor always shrink it to 1 hour!!!! Give half of my money back!!!",1);
+    await courses.updateAvgRatingByCourseID(5);
+
+    await courses.addCommentByCourseID(6,"fakeUser1","One of the fundamental course for CS. Good for new CS student",4);
+    await courses.addCommentByCourseID(6,"fakeUser2","Too easy for CS graduate student. Don't know why make it one of the mendatory courses for CS",1);
+    await courses.addCommentByCourseID(6,"fakeUser3"," Professor is nice and homework is super easy ",4);
+    await courses.updateAvgRatingByCourseID(6);
+
+    await courses.addCommentByCourseID(7,"fakeUser1","Lab is very good. You can practice what you learned from the course",5);
+    await courses.updateAvgRatingByCourseID(7);
+
+    await courses.addCommentByCourseID(8,"fakeUser1","Much harder than CS546. Be careful.",4);
+    await courses.addCommentByCourseID(8,"fakeUser2","Really useful courses. Good for students who are looking for front-end job",5);
+    await courses.addCommentByCourseID(8,"fakeUser3"," Final project is very complicated but meanningful practice",4);
+    await courses.addCommentByCourseID(8,"fakeUser4","I love Professor Patric Hill. Please give us project 100",5);
+    await courses.updateAvgRatingByCourseID(8);
+
+    await courses.addCommentByCourseID(9,"fakeUser1","VERY USEFUL course!!!! You have to choose this one",5);
+    await courses.addCommentByCourseID(9,"fakeUser2","Professor is so fking nice!!!! I love him",5);
+    await courses.addCommentByCourseID(9,"fakeUser3"," The best course in SIT",5);
+    await courses.addCommentByCourseID(9,"fakeUser4","This course is very easy but the exam is kind of hard",4);
+    await courses.updateAvgRatingByCourseID(9);
+
+    await courses.addCommentByCourseID(10,"fakeUser1","The worst course in SIT. No doubt",1);
+    await courses.addCommentByCourseID(10,"fakeUser2","Professor is not responsible enough and the course itself sucks",1);
+    await courses.updateAvgRatingByCourseID(10);
+
+    await courses.addCommentByCourseID(11,"fakeUser1","Lab is a waste of time too",1);
+    await courses.addCommentByCourseID(11,"fakeUser2","Sucks!!!!!!",1);
+    await courses.updateAvgRatingByCourseID(11);
+
+    await courses.addCommentByCourseID(12,"fakeUser1","This course is useful but the professor himself is not very good",3);
+    await courses.addCommentByCourseID(12,"fakeUser2","Professor use other's PPT. Sometimes he even does not know what he is talking about",1);
+    await courses.updateAvgRatingByCourseID(12);
+
+    await courses.addCommentByCourseID(13,"fakeUser1","This course is very good",4);
+    await courses.addCommentByCourseID(13,"fakeUser2","Assignment is too easy. Not good for professional EE student",2);
+    await courses.updateAvgRatingByCourseID(13);
+
+    await courses.addCommentByCourseID(14,"fakeUser1","Useful course",4);
+    await courses.addCommentByCourseID(14,"fakeUser2","Professor is very good",4);
+    await courses.updateAvgRatingByCourseID(14);
+
+    await courses.addCommentByCourseID(15,"fakeUser1","The worst course in SIT. No doubt",1);
+    await courses.addCommentByCourseID(15,"fakeUser2","Not good as CS515",2);
+    await courses.updateAvgRatingByCourseID(15);
+
+    await courses.addCommentByCourseID(16,"fakeUser1","Tooooooooo easy!!!! Cannot learn anything new",1);
+    await courses.addCommentByCourseID(16,"fakeUser2","Useless for CS major student. Maybe good for EE student who want to learn some basic Python language",2);
+    await courses.updateAvgRatingByCourseID(16);
+
     console.log("Done seeding");
     await db.serverConfig.close();
 };

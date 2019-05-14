@@ -1,4 +1,24 @@
 {{!-- JG added --}}
+<script>
+  /*Added AJAX - Kenny*/
+
+  function loadMsg() {
+    let vid = document.getElementById("validIDs");
+    if(document.getElementById("courseID").value >= 17){
+      vid.style.display = "inline-block";
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         vid.innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", "http://localhost:3000/ajax", true);
+      xhttp.send();
+    }else{
+      vid.style.display = "none";
+    }
+  }
+</script>
 <nav>
         <div class="circleBehind">
             <a href="/mainPage">GO BACK</a>
@@ -10,15 +30,16 @@
 <br>
 
 <div class="row">
-  
+
   <div class="column">
     <h1 class="h1-reg">Search by CourseID</h1>
     <p>Please type a course ID that you want to search</p>
     <form class="reg" action="search" method="POST">
         <label>
             Search course ID
-            <input class="cID" type="number" name="courseID"/>
+            <input id="courseID" class="cID" type="number" name="courseID" oninput="loadMsg()"/>
         </label>
+        <p  id="validIDs"></p>
         <br>
         <br>
         <button type="submit" class="searchButton">Search</button>

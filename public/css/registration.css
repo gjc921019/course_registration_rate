@@ -7,7 +7,7 @@
 
 html {
     height: 100%;
-    width: 100%; 
+    width: 100%;
 }
 
 body {
@@ -78,7 +78,7 @@ div.circleBehind a:hover:after
   float: left;
   width: 33.33%;
   padding: 10px;
-  height: 500px; 
+  height: 500px;
 }
 
 /* Clear floats after the columns */
@@ -118,26 +118,26 @@ button {
     font-size: 100%;
 }
 
-table { 
-    width: 500px; 
-    border-collapse: collapse; 
+table {
+    width: 500px;
+    border-collapse: collapse;
     margin:50px auto;
     }
 
-tr:nth-of-type(odd) { 
-    background: #eee; 
+tr:nth-of-type(odd) {
+    background: #eee;
     }
 
-th { 
-    background: #008a00; 
-    color: white; 
-    font-weight: bold; 
+th {
+    background: #008a00;
+    color: white;
+    font-weight: bold;
     }
 
-td, th { 
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
     font-size: 16px;
 }
 
@@ -169,4 +169,9 @@ td, th {
 
 .posts {
     font-size: 1.2em;
+}
+
+#validIDs{
+  display: none;
+  color: red;
 }

@@ -4,7 +4,7 @@
 
   function loadMsg() {
     let vid = document.getElementById("validIDs");
-    if(document.getElementById("courseID").value >= 17){
+    if(document.getElementById("courseID").value >= 17 || document.getElementById("courseID").value <= 0){
       vid.style.display = "inline-block";
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {

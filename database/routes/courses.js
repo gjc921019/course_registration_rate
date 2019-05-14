@@ -300,16 +300,19 @@ router.post("/registration/search",async(req,res) =>{
   else{
     try{
       //console.log("enter try successfully");
-      const course = await courseData.getCourseByCourseID(courseID);
+      let course;
+      if(courseID > 0){
+        course = await courseData.getCourseByCourseID(courseID);
+      }
       //console.log(course);
       req.session.course = course;
       let boo = true;
-      if(course === null){
+      if(course === null || courseID <= 0){
         boo = false;
       }
       res.render("users/search",{title: "Register & Rate-Search", style: "registration.css", course : course, boo: boo, courseID: courseID});
     }catch(e){
-      //console.log("error happened"); 
+      //console.log("error happened");
       res.status(500).json({error:e});
     }
   }
@@ -340,7 +343,7 @@ router.get("/registration/search/:id",checkAuthenticated, async (req,res) =>{
         //res.status(200).json(course);
         req.session.course = course; // Here is important!!!!!!!!
         // need req.session.course in router.post("/registration/search") too
-        
+
 
         res.render("users/search",{title: "Register & Rate-Search", style: "registration.css", course : course, boo: true, courseID: course.courseID});
       } catch (e) {
@@ -378,7 +381,7 @@ router.post("/registration/department", async (req,res) =>{
 
 router.post("/registration/search/register", async (req,res) =>{
   const course = req.session.course;
-  const user = req.session.user; 
+  const user = req.session.user;
   // !!!cannot use this user.profile in the following function
   // !!! because the user.profile is not updated since the user login
   // console.log("Inside the router function:")
@@ -394,8 +397,8 @@ router.post("/registration/search/register", async (req,res) =>{
     const hasError = true;
     res.render("users/register_result",{title: "Register & Rate-RegistrationResult",style: "registration.css", hasError:hasError,error:e});
   }
-  
-  
+
+
 });
 
 //registration/drop part
@@ -565,7 +568,7 @@ router.get("/rating/changeComment/:id",checkAuthenticated, async (req,res) =>{
     res.render("users/changeComment", {title: "Register & Rate-Rating", style: "rating.css"});
   }catch(e){
     res.status(500).json({error:e});
-  } 
+  }
 });
 
 router.post("/rating/changeComment/post", async (req,res) =>{
@@ -623,7 +626,7 @@ router.get("/rating/deleteComment/:id",checkAuthenticated, async (req,res) =>{
   }catch(e){
     const hasError = true;
     res.render("users/rating_result",{title: "Register & Rate-Rating", style: "rating.css", hasError:hasError,error:e});
-  } 
+  }
 });
 
 

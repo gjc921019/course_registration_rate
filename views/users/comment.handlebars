@@ -10,13 +10,14 @@
         </div>
         
 </nav>
+
 <section>
     <h2>Comments about {{courseName}}</h2>
     {{#if hasComment}}
     <ul>
         {{#each comments}}
             <li>
-                <dl>
+                <dl class="posts">
                     <dt>Poster : {{this.poster}}</dt>
                     
                     <dt>Comment : {{this.comment}}</dt>

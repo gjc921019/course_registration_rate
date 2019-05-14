@@ -104,10 +104,11 @@ div.circleBehind a:hover:after
 .ip-new-search-form {
     width: 200px;
     height: 25px;
+    font-size: 0.6em;
 }
 
 .editComments {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .rateAgain {
@@ -124,6 +125,7 @@ div.circleBehind a:hover:after
 .ip-new-comment-form {
     width: 200px;
     height: 25px;
+    font-size: 0.6em;
 }
 
 .reCommentButton {

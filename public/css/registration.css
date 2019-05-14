@@ -166,3 +166,7 @@ td, th {
     cursor: -webkit-grabbing; cursor: grabbing;
     color: blue;
 }
+
+.posts {
+    font-size: 1.2em;
+}

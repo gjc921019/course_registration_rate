@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const auth = require("../data");
 const data = auth.authentication;
 const app = express();
+const xss = require("xss");
+
 
 const studentData = require("../data/students");
 
@@ -22,8 +24,8 @@ router.get("/", (req, res) => {
 
 router.post("/login", async (req, res) => {
 
-    let user = req.body.username;
-    let password = req.body.password;
+    let user = xss(req.body.username);
+    let password = xss(req.body.password);
 
     if (user && password) {
         let userCheck = await data.checkUsername(user);

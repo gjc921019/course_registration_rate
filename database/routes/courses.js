@@ -279,7 +279,7 @@ router.get("/registration", checkAuthenticated, async (req,res) =>{
 
 router.post("/registration/search",async(req,res) =>{
   //console.log(req.body);
-  let courseID = req.body.courseID;
+  let courseID = xss(req.body.courseID);
   //console.log(courseID);
   // let inputData = req.body;
   // for (let i of Object.keys(inputData)) {
@@ -519,7 +519,7 @@ router.get("/rating/newComment/:id",checkAuthenticated, async (req,res) =>{
 router.post("/rating/newComment/post", async (req,res) =>{
   let inputData = req.body;
   //console.log(inputData);
-  let comment = inputData.comment;
+  let comment = xss(inputData.comment);
   //console.log(comment);
   let rateInt = parseInt(inputData.rating);
   //console.log(rateInt);
@@ -570,7 +570,7 @@ router.get("/rating/changeComment/:id",checkAuthenticated, async (req,res) =>{
 router.post("/rating/changeComment/post", async (req,res) =>{
   let inputData = req.body;
   //console.log(inputData);
-  let comment = inputData.comment;
+  let comment = xss(inputData.comment);
   //console.log(comment);
   let rateInt = parseInt(inputData.rating);
   //console.log(rateInt);

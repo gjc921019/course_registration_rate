@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
   /* new students added by post request in the JSON form
     {
     	"userName": "testUser",
-    	"hashedPass": "testPass",
+    	"password": "testPass",
     	"profile": {
     	    "lastName": "testLast",
     	    "firstName": "testFirst",
@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
   */
   try {
     const sData = req.body;
-    const newStudent = await studentData.create(sData.userName, sData.hashedPass, sData.profile.lastName, sData.profile.firstName,
+    const newStudent = await studentData.create(sData.userName, sData.password, sData.profile.lastName, sData.profile.firstName,
       sData.profile.studentId, sData.profile.year, sData.profile.credits);
     res.status(200).json(newStudent);
   } catch (e) {
@@ -118,7 +118,7 @@ router.put("/:id", async (req, res) => {
     }else{
       user = uData.newUser;
     }if(!pwdBool){
-      pwd = student.hashedPass;
+      pwd = student.password;
     }else{
       pwd = uData.newPwd;
     }if(!yearBool){

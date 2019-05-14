@@ -130,7 +130,7 @@ div.selection {
 table { 
     width: 500px; 
     border-collapse: collapse; 
-    margin:50px auto;
+    margin: auto;
     }
 
 tr:nth-of-type(odd) { 

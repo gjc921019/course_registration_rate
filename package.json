@@ -29,8 +29,8 @@
     "xss": "^1.0.6"
   },
   "devDependencies": {
-    "bootstrap-4": "*",
-    "jquery": "*",
-    "tether": "*"
+    "bootstrap-4": "^4.0.0",
+    "jquery": "^3.4.1",
+    "tether": "^1.4.6"
   }
 }

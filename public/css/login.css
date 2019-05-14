@@ -3,18 +3,47 @@
 
 * {
 	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
 }
 
 body {
 	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-DyvPHk0ad-N1o8CVC8PURKlwfU2Rmz5tALqiHKLuva7n08sJ9w");
-	/*background: #f6f5f7;*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
+}
+
+.msg {
+	font-size: 150%;
+	color: red;
+}
+
+.inner {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  will-change: transform;
+  animation: rotator .5s linear infinite;
+}
+
+.inner:first-child {
+  background-color: #ffffff;
+  transform-origin: 50% 100%;
+}
+
+.inner:nth-child(2) {
+  background-color: #ffffff;
+  transform-origin: 50% 0;
+}
+
+@keyframes rotator {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 nav {

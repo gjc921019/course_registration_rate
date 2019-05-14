@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 router.get("/", (req, res) => {
     if (!req.session.user) {
-        res.render('users/login', {title: "Register & Rate-Login", style: "style.css"});
+        res.render('users/login', {title: "Register & Rate-Login", style: "login.css"});
     }
     else {
         res.redirect("/mainPage");
@@ -70,7 +70,7 @@ router.get("/mainPage", checkAuthenticated, async (req, res) => {
         {
             user: user.profile,
             title: "Register & Rate-Dashboard",
-            style: "test.css"
+            style: "mainPage.css"
         });
     }
     catch(e){
@@ -84,14 +84,14 @@ router.get("/logout", checkAuthenticated, (req, res) => {
             return console.log(err);
         }
     res.clearCookie('AuthCookie');
-    res.render("users/logout", {title: "Register & Rate-Logout", style: "style.css"});
+    res.render("users/logout", {title: "Register & Rate-Logout", style: "login.css"});
 });
     
 });
 
-router.get("/howitworks", (req, res) => {
-    res.render('users/howitworks');
-});
+/*router.get("/howitworks", (req, res) => {
+    res.render('users/howitworks', {title: "Register & Rate-How It Works", style: "howitworks.css"});
+});*/
 
 router.get("/aboutus", (req, res) => {
     res.render('users/aboutus',  {title: "Register & Rate-About Us", style: "aboutus.css"});

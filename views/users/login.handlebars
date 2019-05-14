@@ -1,16 +1,14 @@
 <nav>
         <div class="circleBehind">
-            <a>HOME</a>
             <a href="/aboutus">ABOUT-US</a>
-            <a>HOW IT WORKS</a>
         </div>
 
 </nav>
 
 <br>
-<br>
 
 <h1>Welcome to Register&Rate!</h1>
+<br>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="/">
@@ -42,11 +40,21 @@
             </div>
             <div class="overlay-panel overlay-right">
                 <h1>Hello, there!</h1>
+                <div class="outer">
+                    <div class="inner"></div>
+                    <div class="inner"></div>
+                </div>
                 <p>Someone's waiting for you</p>
                 <button class="ghost" id="clickMe">Click Me!</button>
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    {{#unless status}}
+    <p class="msg">{{message}}</p>
+    {{/unless}}
 </div>
 
 <script>
@@ -61,14 +69,4 @@ clickMeButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
-</script>
-
-                <br>
-                
-                <div>
-
-                {{#unless status}}
-                    <p class="msg">{{message}}</p>
-                {{/unless}}
-
-                </div>          
+</script>          

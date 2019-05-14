@@ -1,4 +1,5 @@
 // Author: Kenneth Mason
+// After 165, author : JG 
 
 const mongoCollections = require("./mongoCollections");
 const courses = mongoCollections.courses;
@@ -161,7 +162,7 @@ const removeComment = async(id, newComments, avgRating) => {
   return await getCourseById(id);
 };
 
-//added by JG
+//Below are added by JG
 async function getCourseByCourseID(ID){
   //console.log("enter function successfully");
   //console.log("id is " + ID);

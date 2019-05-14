@@ -1,4 +1,5 @@
 // Author: Kenneth Mason
+// After 132, author : JG
 const bcrypt = require('bcrypt');
 const mongoCollections = require("./mongoCollections");
 const students = mongoCollections.students;
@@ -127,6 +128,8 @@ const saltRounds = 16;
     }
     return await get(id);
   };
+
+  // Below are added by JG
 
   const updateFinishedCourses = async (userName, FinishedCourses) =>{
     if(!userName) throw "You must provide a userName";

@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
             res.render("users/login",
                 {
                     title: "Register & Rate-Login",
-                    style: "style.css",
+                    style: "login.css",
                     message: passCheck.message,
                     status: false
                 }
@@ -88,10 +88,6 @@ router.get("/logout", checkAuthenticated, (req, res) => {
 });
     
 });
-
-/*router.get("/howitworks", (req, res) => {
-    res.render('users/howitworks', {title: "Register & Rate-How It Works", style: "howitworks.css"});
-});*/
 
 router.get("/aboutus", (req, res) => {
     res.render('users/aboutus',  {title: "Register & Rate-About Us", style: "aboutus.css"});
